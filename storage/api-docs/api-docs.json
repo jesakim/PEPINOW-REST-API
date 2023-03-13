@@ -1,0 +1,236 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pepinow",
+        "description": "Pepinow Api Documentation",
+        "version": "3.1.0"
+    },
+    "paths": {
+        "/api/category": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Store new category",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Category name to be stored",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid values"
+                    }
+                }
+            }
+        },
+        "/api/category/1": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get category with Id",
+                "operationId": "show",
+                "responses": {
+                    "201": {
+                        "description": "category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid values"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update category",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Category name to be stored",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Category not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "delete category",
+                "operationId": "destroy",
+                "responses": {
+                    "201": {
+                        "description": "category deleted successfully"
+                    },
+                    "400": {
+                        "description": "Category not found"
+                    }
+                }
+            }
+        },
+        "/api/plant": {
+            "get": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "Get all Plants",
+                "operationId": "get",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "Store new Plant",
+                "operationId": "storep",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Plant name to be stored",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "plant description to be stored",
+                        "required": true
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "plant price to be stored",
+                        "required": true
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Plant category id to be stored",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/plant/1": {
+            "get": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "Get plant",
+                "operationId": "showp",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "Update Plant",
+                "operationId": "updatep",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Plant name to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "plant description to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "plant price to be updated",
+                        "required": true
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Plant category id to be updated",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Plants"
+                ],
+                "summary": "delete Plant",
+                "operationId": "destroyP",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        }
+    }
+}

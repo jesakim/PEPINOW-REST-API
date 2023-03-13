@@ -9,7 +9,20 @@ use Illuminate\Support\Facades\Validator;
 class PlantController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/plant",
+     *     tags={"Plants"},
+     *     summary="Get all Plants",
+     *     operationId="get",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function index()
     {
@@ -17,8 +30,45 @@ class PlantController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
+   /**
+     * @OA\post(
+     *     path="/api/plant",
+     *     tags={"Plants"},
+     *     summary="Store new Plant",
+     *     operationId="storep",
+     * @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="Plant name to be stored",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="plant description to be stored",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="price",
+     *         in="query",
+     *         description="plant price to be stored",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="category_id",
+     *         in="query",
+     *         description="Plant category id to be stored",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -47,7 +97,20 @@ class PlantController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\get(
+     *     path="/api/plant/1",
+     *     tags={"Plants"},
+     *     summary="Get plant",
+     *     operationId="showp",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function show(Plant $plant)
     {
@@ -59,7 +122,44 @@ class PlantController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\put(
+     *     path="/api/plant/1",
+     *     tags={"Plants"},
+     *     summary="Update Plant",
+     *     operationId="updatep",
+     * * @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="Plant name to be updated",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="plant description to be updated",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="price",
+     *         in="query",
+     *         description="plant price to be updated",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="category_id",
+     *         in="query",
+     *         description="Plant category id to be updated",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function update(Request $request, Plant $plant)
     {
@@ -87,7 +187,20 @@ class PlantController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\delete(
+     *     path="/api/plant/1",
+     *     tags={"Plants"},
+     *     summary="delete Plant",
+     *     operationId="destroyP",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function destroy(Plant $plant)
     {

@@ -184,8 +184,9 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
+        * Package Service Providers...
+        */
+        L5Swagger\L5SwaggerServiceProvider::class,
 
         /*
          * Application Service Providers...

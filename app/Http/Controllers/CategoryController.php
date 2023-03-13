@@ -8,8 +8,21 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+   /**
+     * @OA\Get(
+     *     path="/api/category",
+     *     tags={"Categories"},
+     *     summary="Get all categories",
+     *     operationId="index",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
      */
     public function index()
     {
@@ -17,7 +30,26 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/api/category",
+     *     tags={"Categories"},
+     *     summary="Store new category",
+     *     operationId="store",
+     * @OA\Parameter(
+     *         name="category",
+     *         in="query",
+     *         description="Category name to be stored",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="category created successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid values"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -32,13 +64,26 @@ class CategoryController extends Controller
         $category = Category::create($request->only('category'));
 
         return response()->json([
-            'massage'=>'user created successfully',
-            'user'=>$category,
+            'massage'=>'category created successfully',
+            'category'=>$category,
         ],201);
     }
 
-    /**
-     * Display the specified resource.
+     /**
+     * @OA\get(
+     *     path="/api/category/1",
+     *     tags={"Categories"},
+     *     summary="Get category with Id",
+     *     operationId="show",
+     *     @OA\Response(
+     *         response=201,
+     *         description="category created successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid values"
+     *     )
+     * )
      */
     public function show(Category $category)
     {
@@ -48,7 +93,26 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/api/category/1",
+     *     tags={"Categories"},
+     *     summary="Update category",
+     *     operationId="update",
+     *  @OA\Parameter(
+     *         name="category",
+     *         in="query",
+     *         description="Category name to be stored",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Category updated successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Category not found"
+     *     )
+     * )
      */
     public function update(Request $request,Category $category)
     {
@@ -71,7 +135,20 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/api/category/1",
+     *     tags={"Categories"},
+     *     summary="delete category",
+     *     operationId="destroy",
+     *     @OA\Response(
+     *         response=201,
+     *         description="category deleted successfully",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Category not found"
+     *     )
+     * )
      */
     public function destroy(Category $category)
     {
