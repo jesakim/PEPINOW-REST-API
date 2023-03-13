@@ -14,6 +14,7 @@ class PlantController extends Controller
      *     tags={"Plants"},
      *     summary="Get all Plants",
      *     operationId="get",
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
@@ -60,6 +61,7 @@ class PlantController extends Controller
      *         description="Plant category id to be stored",
      *         required=true,
      *     ),
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
@@ -102,6 +104,7 @@ class PlantController extends Controller
      *     tags={"Plants"},
      *     summary="Get plant",
      *     operationId="showp",
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
@@ -127,6 +130,7 @@ class PlantController extends Controller
      *     tags={"Plants"},
      *     summary="Update Plant",
      *     operationId="updatep",
+     *     security={{"bearer_token":{}}},
      * * @OA\Parameter(
      *         name="name",
      *         in="query",
@@ -192,6 +196,7 @@ class PlantController extends Controller
      *     tags={"Plants"},
      *     summary="delete Plant",
      *     operationId="destroyP",
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",

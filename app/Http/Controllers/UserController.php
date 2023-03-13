@@ -11,6 +11,34 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
 {
+    /**
+     * @OA\post(
+     *     path="/api/login",
+     *     tags={"User"},
+     *     summary="Login",
+     *     operationId="authenticate",
+     *   @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User email",
+     *         required=true,
+     *     ),
+     *  @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User password",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
+     */
     public function authenticate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -31,6 +59,47 @@ class UserController extends Controller
         return response()->json(compact('token'));
     }
 
+
+    /**
+     * @OA\post(
+     *     path="/api/register",
+     *     tags={"User"},
+     *     summary="Register",
+     *     operationId="register",
+     *  @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="User name",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User email",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User password",
+     *         required=true,
+     *     ),
+     * @OA\Parameter(
+     *         name="password_confirmation",
+     *         in="query",
+     *         description="User password_confirmation",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     )
+     * )
+     */
     public function register(Request $request)
     {
             $validator = Validator::make($request->all(), [

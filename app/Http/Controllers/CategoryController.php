@@ -14,6 +14,7 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Get all categories",
      *     operationId="index",
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
@@ -35,6 +36,7 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Store new category",
      *     operationId="store",
+     *     security={{"bearer_token":{}}},
      * @OA\Parameter(
      *         name="category",
      *         in="query",
@@ -75,6 +77,7 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Get category with Id",
      *     operationId="show",
+     *     security={{"bearer_token":{}}},
      *     @OA\Response(
      *         response=201,
      *         description="category created successfully",
@@ -98,6 +101,7 @@ class CategoryController extends Controller
      *     tags={"Categories"},
      *     summary="Update category",
      *     operationId="update",
+     *     security={{"bearer_token":{}}},
      *  @OA\Parameter(
      *         name="category",
      *         in="query",
@@ -139,6 +143,7 @@ class CategoryController extends Controller
      *     path="/api/category/1",
      *     tags={"Categories"},
      *     summary="delete category",
+     *     security={{"bearer_token":{}}},
      *     operationId="destroy",
      *     @OA\Response(
      *         response=201,

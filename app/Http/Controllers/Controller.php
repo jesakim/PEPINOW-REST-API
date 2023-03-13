@@ -10,8 +10,13 @@ use Illuminate\Routing\Controller as BaseController;
  * @OA\Info(
  *      version="3.1.0",
  *      title="Pepinow",
- *      description="Pepinow Api Documentation",
+ *      description="Pepinow Api Documentation",)
+ *  @OA\SecurityScheme(
+ *      securityScheme="bearer_token",
+ *      type="http",
+ *      scheme="bearer"
  * )
+ *
  */
 
 class Controller extends BaseController
