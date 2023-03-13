@@ -1,66 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Contexte du projet
 
-## About Laravel
+La pépinière PEPINOW souhaite développer une API pour améliorer la gestion de ses ventes, ainsi que pour offrir une expérience client améliorée
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Nous sommes une pépinière en pleine croissance, et nous sommes à la recherche de solutions pour améliorer notre efficacité et notre productivité. Nous avons identifié le besoin d'une API pour faciliter la gestion de nos stocks et de nos ventes, ainsi que pour améliorer l'expérience de nos clients.
+- Les administrateurs pourront gérer l plantes existantes et aussi ses catégories.
+- Des rôles utilisateur seront également implémentés pour limiter les fonctionnalités en fonction des permissions d'accès.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fonctionnalités clés:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Création, édition, suppression et consultation de catégories (Exp : Botanique/Fleurs/Arbre/Tropicale.........).
+- Création, édition, suppression et consultation des plantes.
+- Implémentation de rôles utilisateur pour limiter les fonctionnalités en fonction des permissions d'accès.
 
-## Learning Laravel
+## Technologies requises:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Laravel, PHP, MySQL, API REST, JSON, Documentation API (POSTMAN, OPEN API ou SWAGGER).
+- Authentification avec Laravel via (sanctum, jwt ou bien passport)
+- Framework requise: Laravel.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## User stories:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- En tant qu'utilisateur, je peux créer un compte en utilisant mon adresse e-mail et un mot de passe sécurisé.
+- En tant qu'utilisateur, je peux me connecter à mon compte existant en utilisant mon adresse e-mail et mon mot de passe.
+- En tant qu'utilisateur, je peux réinitialiser mon mot de passe en utilisant mon adresse e-mail associée à mon compte.
+- En tant qu'utilisateur, je peux modifier les informations de mon compte, telles que mon adresse e-mail et mon mot de passe, en tout temps.
+- En tant qu'un vendeur, je peux créer une plante en saisissant le nom, la description, un prix, une image et en associant des catégories.
+- En tant qu'un vendeur, je peux éditer ou supprimer mes plantes existantes.
+- En tant qu'utilisateur, je peux consulter la liste des plantes disponibles, filter par catégorie et afficher les détails d'une plante en particulier.
+- En tant qu'administrateur, je peux éditer ou supprimer tous les plantes et les catégories.
+- En tant qu'administrateur, je peux créer, éditer et supprimer les catégories.
+- En tant qu'administrateur, je peux éditer et supprimer des rôles utilisateur, et affecter des permissions d'accès à chaque rôle.
