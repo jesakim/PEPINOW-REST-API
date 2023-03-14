@@ -74,10 +74,19 @@ class PlantController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('image')){
+            $image = $request->name.'_'.uniqid().'.'.$request->image->extension();
+            $request->image->storeAs('public/images',$image);
+
+        }else{
+            $image = 'Default.png';
+
+        }
         $validator = Validator::make($request->all(), [
             'name'=>'required|string|max:255',
             'description'=>'required|string|max:255',
             'price'=>'required|integer',
+            'image'=>'mimes:png,jpg,jpeg',
             'category_id'=>'required|int|exists:categories,id',
 
         ]);
@@ -88,7 +97,13 @@ class PlantController extends Controller
 
         // return $validator->validate();
 
-        $plant = Plant::create($validator->validate());
+        $plant = Plant::create([
+            "name"=>$request->name,
+            "description"=>$request->description,
+            "price"=>$request->price,
+            "category_id"=>$request->category_id,
+            "image"=>$image
+        ]);
 
         return response()->json([
             'massage'=>'plant created successfully',
