@@ -12,11 +12,16 @@ class Plant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'price','category_id',"image"
+        'name', 'description', 'price','category_id',"image","user_id"
     ];
 
-    public function category(): BelongsTo
+    public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(USER::class);
     }
 }

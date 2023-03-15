@@ -55,8 +55,8 @@ class UserController extends Controller
                 return response()->json(['error' => 'invalid_credentials'], 400);
             }
 
-
-        return response()->json(compact('token'));
+          $expires_in = JWTAuth::factory()->getTTL();
+        return response()->json(compact('token','expires_in'));
     }
 
 
@@ -127,7 +127,8 @@ class UserController extends Controller
     public function getAuthenticatedUser()
         {
             return response()->json([
-                'user'=>auth()->user()
+                'user'=>auth()->user(),
+                'plant'=>auth()->user()->plants,
             ]);
         }
     public function logout(){

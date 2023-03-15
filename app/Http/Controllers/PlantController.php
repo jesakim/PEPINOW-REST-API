@@ -74,14 +74,6 @@ class PlantController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image')){
-            $image = $request->name.'_'.uniqid().'.'.$request->image->extension();
-            $request->image->storeAs('public/images',$image);
-
-        }else{
-            $image = 'Default.png';
-
-        }
         $validator = Validator::make($request->all(), [
             'name'=>'required|string|max:255',
             'description'=>'required|string|max:255',
@@ -95,14 +87,25 @@ class PlantController extends Controller
                 return response()->json($validator->errors(), 400);
         }
 
-        // return $validator->validate();
+        if($request->hasFile('image')){
+            $image = $request->name.'_'.uniqid().'.'.$request->image->extension();
+            $request->image->storeAs('public/images',$image);
+
+        }else{
+            $image = 'Default.png';
+
+        }
+
+
+        // return auth('api')->user()->id;
 
         $plant = Plant::create([
             "name"=>$request->name,
             "description"=>$request->description,
             "price"=>$request->price,
             "category_id"=>$request->category_id,
-            "image"=>$image
+            "image"=>$image,
+            "user_id"=>auth('api')->user()->id
         ]);
 
         return response()->json([
@@ -182,10 +185,14 @@ class PlantController extends Controller
      */
     public function update(Request $request, Plant $plant)
     {
+        if( $plant->user_id == auth("api")->user()->id || auth("api")->user()->role == 2){
+
+
         $validator = Validator::make($request->all(), [
             'name'=>'required|string|max:255',
             'description'=>'required|string|max:255',
             'price'=>'required|integer',
+            'image'=>'mimes:png,jpg,jpeg',
             'category_id'=>'required|int|exists:categories,id',
 
         ]);
@@ -194,15 +201,32 @@ class PlantController extends Controller
                 return response()->json($validator->errors(), 400);
         }
 
-        // return $validator->validate();
+        if($request->hasFile('image')){
+            $image = $request->name.'_'.uniqid().'.'.$request->image->extension();
+            $request->image->storeAs('public/images',$image);
 
-        $plant->update($validator->validate());
+        }else{
+            $image = $plant->image;
+        }
+
+        $plant->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'category_id'=>$request->category_id,
+            'image'=>$image,
+        ]);
 
         return response()->json([
             'massage'=>'plant updated successfully',
             'plant'=>$plant,
             'category'=>$plant->category,
         ],201);
+    }else{
+        return response()->json([
+            'massage'=>'not yours',
+        ],403);
+    }
     }
 
     /**
@@ -224,10 +248,16 @@ class PlantController extends Controller
      */
     public function destroy(Plant $plant)
     {
+        if( $plant->user_id == auth("api")->user()->id || auth("api")->user()->role == 2){
         $plant->delete();
         return response()->json([
             'massage'=>'plant Deleted successfully',
             'plant'=>$plant,
         ],200);
+    }else{
+        return response()->json([
+            'massage'=>'not yours',
+        ],403);
+    }
     }
 }
