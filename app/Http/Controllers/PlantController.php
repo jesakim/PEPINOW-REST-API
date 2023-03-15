@@ -27,7 +27,11 @@ class PlantController extends Controller
      */
     public function index()
     {
+        if( auth("api")->user()->role == 2){
        return response()->json(['plants' => Plant::all()]);
+
+        }
+       return response()->json(['plants' => auth()->user()->plants]);
 
     }
 
