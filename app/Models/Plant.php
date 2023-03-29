@@ -15,12 +15,12 @@ class Plant extends Model
         'name', 'description', 'price','category_id',"image","user_id"
     ];
 
-    public function categories(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function users(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(USER::class);
     }
